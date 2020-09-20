@@ -10,14 +10,14 @@
 	)
 
 (defn CannonX
-	([V0 Angle t]
-		(def x (* t (* V0 (Math/cos (r2a Angle)))))
+	([V0 Angle t Angle_W w]
+		(def x (* t (+ (* V0 (Math/cos (r2a Angle))) (* w (Math/cos (r2a Angle_W))))))
 		(format "Result X: %f" x)
 		)
 	)
 (defn CannonY
-	([V0 Angle t]
-		(def y (- (* t (* V0 (Math/sin (r2a Angle)))) (* g (* t t))))
+	([V0 Angle t M Angle_W w]
+		(def y (- (* t (+ (* V0 (Math/sin (r2a Angle))) (* w (Math/sin (r2a Angle_W)))) (* M (* g (* t t))))))
 		(format "Result Y: %f" y)
 		)
 	)
